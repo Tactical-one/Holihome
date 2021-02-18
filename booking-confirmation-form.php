@@ -1,6 +1,4 @@
-<?php
-include("connection.php");
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +78,7 @@ include("connection.php");
 						<li>
 							<a href="dashboard.php">
 							<i class="glyphicon glyphicon-home"></i>
-							Tours </a>
+							Properties </a>
 						</li>
 						<li class="active">
 							<a href="booking-confirmation-form.php">
@@ -117,8 +115,8 @@ include("connection.php");
     <label for="lname">Last Name</label>
     <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-    <label for="tour">Select Tour</label>
-    <select id="tour" name="selectedtour">
+    <label for="property">Select Property</label>
+    <select id="property" name="selectedproperty">
       <option value="Aberdeen Sculpture Trail">Aberdeen Sculpture Trail</option>
       <option value="Crathes Castle">Crathes Castle</option>
       <option value="Marischal College">Marischal College</option>
