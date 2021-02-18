@@ -1,0 +1,408 @@
+
+  /*why us*/
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
+
+  .row {margin: 0 -5px;}
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    background-color: #444;
+    color: white;
+  }
+  
+  .fa {font-size:50px;}
+  /* counter cards end here*/
+
+  /* testimonials */
+  .testimonials-clean {
+    color:#313437;
+    background-color:#eef4f7;
+  }
+  
+  .testimonials-clean p {
+    color:#7d8285;
+  }
+  
+  .testimonials-clean h2 {
+    font-weight:bold;
+    margin-bottom:40px;
+    padding-top:40px;
+    color:inherit;
+  }
+  
+  @media (max-width:767px) {
+    .testimonials-clean h2 {
+      margin-bottom:25px;
+      padding-top:25px;
+      font-size:24px;
+    }
+  }
+  
+  .testimonials-clean .intro {
+    font-size:16px;
+    max-width:500px;
+    margin:0 auto;
+  }
+  
+  .testimonials-clean .intro p {
+    margin-bottom:0;
+  }
+  
+  .testimonials-clean .people {
+    padding:50px 0 20px;
+  }
+  
+  .testimonials-clean .item {
+    margin-bottom:32px;
+  }
+  
+  @media (min-width:768px) {
+    .testimonials-clean .item {
+      height:220px;
+    }
+  }
+  
+  .testimonials-clean .item .box {
+    padding:30px;
+    background-color:#fff;
+    position:relative;
+  }
+  
+  .testimonials-clean .item .box:after {
+    content:'';
+    position:absolute;
+    left:30px;
+    bottom:-24px;
+    width:0;
+    height:0;
+    border:15px solid transparent;
+    border-width:12px 15px;
+    border-top-color:#fff;
+  }
+  
+  .testimonials-clean .item .author {
+    margin-top:28px;
+    padding-left:25px;
+  }
+  
+  .testimonials-clean .item .name {
+    font-weight:bold;
+    margin-bottom:2px;
+    color:inherit;
+  }
+  
+  .testimonials-clean .item .title {
+    font-size:13px;
+    color:#9da9ae;
+  }
+  
+  .testimonials-clean .item .description {
+    font-size:15px;
+    margin-bottom:0;
+  }
+  
+  .testimonials-clean .item img {
+    max-width:40px;
+    float:left;
+    margin-right:12px;
+    margin-top:-5px;
+  }
+/* Testimonials END */
+
+
+ /* Login */
+ :root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: 0.75rem;
+}
+
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('https://source.unsplash.com/WEQbe2jBg40/600x1200');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-heading {
+  font-weight: 300;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  cursor: text;
+  /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+
+@supports (-ms-ime-align: auto) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}
+/* LOgin END */
+
+/* Register begin */
+.bg-image-register {
+  background-image: url('https://source.unsplash.com/WEQbe2jBg40/600x1200');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Register end */
+
+
+/* become a host page */
+*,:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+a{color:inherit;text-decoration:none}
+
+.login-wrap{
+	width:100%;
+	margin:auto;
+	max-width:525px;
+	min-height:800px;
+	position:relative;
+	background-color: #313437;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+  margin-top: 50px;
+  margin-bottom:auto;
+}
+.login-html{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background:rgba(40,57,101,.9);
+}
+.login-html .sign-in-htm,
+.login-html .sign-up-htm{
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	position:absolute;
+	transform:rotateY(180deg);
+	backface-visibility:hidden;
+	transition:all .4s linear;
+}
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check{
+	display:none;
+}
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button{
+	text-transform:uppercase;
+}
+.login-html .tab{
+	font-size:22px;
+	margin-right:15px;
+	padding-bottom:5px;
+	margin:0 15px 10px 0;
+	display:inline-block;
+	border-bottom:2px solid transparent;
+}
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab{
+	color:#fff;
+	border-color:#1161ee;
+}
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+}
+.login-form .group{
+	margin-bottom:15px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+	width:100%;
+	color:#fff;
+	display:block;
+}
+.login-form .group .input,
+.login-form .group .button{
+	border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+
+.login-form .group .label{
+	color:#aaa;
+	font-size:12px;
+}
+.login-form .group .button{
+	background:#1161ee;
+}
+.login-form .group label .icon{
+	width:15px;
+	height:15px;
+	border-radius:2px;
+	position:relative;
+	display:inline-block;
+	background:rgba(255,255,255,.1);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+	content:'';
+	width:10px;
+	height:2px;
+	background:#fff;
+	position:absolute;
+	transition:all .2s ease-in-out 0s;
+}
+.login-form .group label .icon:before{
+	left:3px;
+	width:5px;
+	bottom:6px;
+	transform:scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+	top:6px;
+	right:0;
+	transform:scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+	color:#fff;
+}
+.login-form .group .check:checked + label .icon{
+	background:#1161ee;
+}
+.login-form .group .check:checked + label .icon:before{
+	transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+	transform:scale(1) rotate(-45deg);
+}
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+	transform:rotate(0);
+}
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+	transform:rotate(0);
+}
+
+.hr{
+	height:2px;
+	margin:60px 0 50px 0;
+	background:rgba(255,255,255,.2);
+}
+.foot-lnk{
+	text-align:center;
+}
+
+/* become a host page end*/
+
