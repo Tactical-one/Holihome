@@ -1,3 +1,9 @@
+<?php
+include("connection.php");
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -67,7 +73,7 @@
 				<!-- SIDEBAR BUTTONS -->
 				<div class="profile-userbuttons">
 					<button type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">Log out</button>
+					<button type="button" class="btn btn-danger btn-sm"><a href="" style="color:white;"> Log out </a></button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 
@@ -75,19 +81,19 @@
 				<div class="profile-usermenu">
 					<ul class="nav_dash">
 						<li class="active">
-							<a href="#">
+							<a href="dashboard.php">
 							<i class="glyphicon glyphicon-home"></i>
-							Profile </a>
+							Properties </a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="booking-confirmation-form.php">
 							<i class="glyphicon glyphicon-user"></i>
-							Account Settings </a>
+							Booking </a>
 						</li>
 						<li>
 							<a href="#" target="_blank">
 							<i class="glyphicon glyphicon-ok"></i>
-							Tasks </a>
+							Account Settings </a>
 						</li>
 						<li>
 							<a href="#">
@@ -117,9 +123,9 @@
           <p class="card-text">
             The Carousel code can be replaced with an img src, no problem. The added CSS brings shadow to the card and some adjustments to the prev/next buttons and the indicators is rounded now. As in Bootstrap 3
           </p>
-          <p class="card-text">Made for usage, commonly searched for. Fork, like and use it. Just move the carousel div above the col containing the text for left alignment of images</p>
+          <p class="card-text"><i class="fa fa-tag"></i><b> £500/Night </b></p>
           <br>
-          <a href="#" class="mt-auto btn btn-primary  ">Book now</a>
+          <a href="booking-confirmation-form.php" class="mt-auto btn btn-primary  ">Book now</a>
         </div>
       </div>
       <!-- Carousel start -->
@@ -170,9 +176,9 @@
           <p class="card-text">
             The Carousel code can be replaced with an img src, no problem. The added CSS brings shadow to the card and some adjustments to the prev/next buttons and the indicators is rounded now. As in Bootstrap 3
           </p>
-          <p class="card-text">Made for usage, commonly searched for. Fork, like and use it. Just move the carousel div above the col containing the text for left alignment of images</p>
+          <p class="card-text"><i class="fa fa-tag"></i><b> £850/Night </b></p>
           <br>
-          <a href="#" class="mt-auto btn btn-primary  ">Book now</a>
+          <a href="booking-confirmation-form.php" class="mt-auto btn btn-primary  ">Book now</a>
         </div>
       </div>
       <!-- Carousel start -->
@@ -224,9 +230,9 @@
           <p class="card-text">
             The Carousel code can be replaced with an img src, no problem. The added CSS brings shadow to the card and some adjustments to the prev/next buttons and the indicators is rounded now. As in Bootstrap 3
           </p>
-          <p class="card-text">Made for usage, commonly searched for. Fork, like and use it. Just move the carousel div above the col containing the text for left alignment of images</p>
+          <p class="card-text"><i class="fa fa-tag"></i><b> £200/Night </b></p>
           <br>
-          <a href="#" class="mt-auto btn btn-primary  ">Book now</a>
+          <a href="booking-confirmation-form.php" class="mt-auto btn btn-primary  ">Book now</a>
         </div>
       </div>
       <!-- Carousel start -->

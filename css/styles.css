@@ -10151,7 +10151,7 @@ body {
     padding-top: 0;
     padding-bottom: 0;
     border-bottom: none;
-    background-color: #6c757d3b;
+    background-color: transparent;
     transition: background-color 0.3s ease-in-out;
   }
   #mainNav .navbar-brand {
@@ -10164,7 +10164,7 @@ body {
     color: black;
   }
   #mainNav .nav-link:hover {
-    color: rgba(255, 255, 255, 0.75);
+    color: #64a19d;
   }
   #mainNav .nav-link:active {
     color: #fff;
