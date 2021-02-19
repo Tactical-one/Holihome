@@ -101,7 +101,7 @@
             <div class="container">
                 <!-- Featured Project Row-->
                 <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="" /></div>
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/Saudi Arabia.jpg" alt="holiday home Saudi" /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
                             <h4>Shoreline</h4>
@@ -111,7 +111,7 @@
                 </div>
                 <!-- Project One Row-->
                 <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="" /></div>
+                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/Dubai.jpg" alt="Apartment interior dubai" /></div>
                     <div class="col-lg-6">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
@@ -126,7 +126,7 @@
                 </div>
                 <!-- Project Two Row-->
                 <div class="row justify-content-center no-gutters">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="" /></div>
+                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/Greece.jpg" alt="Greece Condo" /></div>
                     <div class="col-lg-6 order-lg-first">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
@@ -157,16 +157,16 @@
                     <div class="box">
                         <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
                     </div>
-                    <div class="author"><img class="rounded-circle" src="assets/img/1.jpg">
-                        <h5 class="name">Ben Johnson</h5>
-                        <p class="title">CEO of Company Inc.</p>
+                    <div class="author"><img class="rounded-circle" src="assets/img/ceo1.jpeg">
+                        <h5 class="name">Kat Hudson</h5>
+                        <p class="title">CEO of Global Inc.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 item">
                     <div class="box">
                         <p class="description">Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id.</p>
                     </div>
-                    <div class="author"><img class="rounded-circle" src="assets/img/3.jpg">
+                    <div class="author"><img class="rounded-circle" src="assets/img/Topic_Page_Satya_Nadella.jpg">
                         <h5 class="name">Carl Kent</h5>
                         <p class="title">Founder of Style Co.</p>
                     </div>
@@ -175,7 +175,7 @@
                     <div class="box">
                         <p class="description">Aliquam varius finibus est, et interdum justo suscipit. Vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
                     </div>
-                    <div class="author"><img class="rounded-circle" src="assets/img/2.jpg">
+                    <div class="author"><img class="rounded-circle" src="assets/img/ceo2.jpg">
                         <h5 class="name">Emily Clark</h5>
                         <p class="title">Owner of Creative Ltd.</p>
                     </div>
@@ -220,7 +220,7 @@
                                 <i class="fas fa-envelope text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Email</h4>
                                 <hr class="my-4" />
-                                <div class="small text-black-50"><a href="#!">hello@yourdomain.com</a></div>
+                                <div class="small text-black-50"><a href="#!">hello@HoliHome.com</a></div>
                             </div>
                         </div>
                     </div>
@@ -230,7 +230,7 @@
                                 <i class="fas fa-mobile-alt text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Phone</h4>
                                 <hr class="my-4" />
-                                <div class="small text-black-50">+1 (555) 902-8832</div>
+                                <div class="small text-black-50">+1 (123) 456-7890</div>
                             </div>
                         </div>
                     </div>
