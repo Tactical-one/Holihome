@@ -146,7 +146,7 @@
 }
 
 .bg-image {
-  background-image: url("assets/img/architecture.jpg");
+  background-image: url("../assets/img/interior2.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -251,7 +251,7 @@
 
 /* Register begin */
 .bg-image-register {
-  background-image: url('assets/img/interior2.jpg');
+  background-image: url('../assets/img/architecture.jpg');
   background-size: cover;
   background-position: center;
 }
