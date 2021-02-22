@@ -1,3 +1,28 @@
+<?php
+include("connection.php");
+
+if (isset($_POST['signin'])){
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+
+	if(empty($email) || empty($password)){ 
+		$msg = "Both fields must be entered!!";
+	}else{
+		$sql = "SELECT user_ID FROM users WHERE email='$email' AND password='$password'";
+		$result = mysqli_query($db,$sql);
+
+		if(mysqli_num_rows($result) == 1){
+			$_SESSION['host_id'] = $email;
+			header("Location:host-dashboard.php");
+		}else{
+			$msg = "Incorrect email or password!";
+		}
+	}
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -88,15 +113,15 @@
                             <!-- Sign in -->
 		
 			<div class="sign-in-htm">
-		<form id="signin" method="post" action="#">
+		<form id="signin" method="post" action="">
             <div class="group">
 					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input">
+					<input id="pass" type="text" class="input" name="email">
 				</div>
 
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input id="pass" type="password" class="input" data-type="password" name="password">
 				</div>
 
 				<div class="group">
@@ -105,8 +130,11 @@
 				</div>
 
 				<div class="group">
-					<input type="submit" class="button" value="Sign In">
+					<input type="submit" class="button" value="Sign In" name="signin">
 				</div>
+
+				<p style="color:red;"><?php if(isset($msg)){print $msg; }?></p>
+
 			</form>
 				<div class="hr"></div>
 
