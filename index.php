@@ -155,9 +155,9 @@
             <div class="row people">
                 <div class="col-md-6 col-lg-4 item">
                     <div class="box">
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
                     </div>
-                    <div class="author"><img class="rounded-circle" src="assets/img/ceo1.jpeg">
+                    <div class="author"><img class="rounded-circle" src="assets/img/ceo.jpg">
                         <h5 class="name">Kat Hudson</h5>
                         <p class="title">CEO of Global Inc.</p>
                     </div>
