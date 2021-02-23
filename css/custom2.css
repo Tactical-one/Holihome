@@ -170,7 +170,7 @@
 
   /* booking confirmation page */
   
-input[type=text], select {
+input[type=text], select, textarea {
   width: 100%;
   padding: 12px 20px;
   margin-top: 0.5px;

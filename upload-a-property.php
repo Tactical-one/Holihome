@@ -86,7 +86,7 @@ include("connection.php");
 							Dashboard </a>
 						</li>
                         <li class = "active">
-							<a href="upload.php">
+							<a href="upload-a-property.php">
 							<i class="glyphicon glyphicon-user"></i>
 							Upload a property</a>
 						</li>
@@ -109,13 +109,24 @@ include("connection.php");
         <!-- right section -->
 		<div class="col-md-9">
             <div class="profile-content">
-			   <h3> Welcome!!</h3>
+			  <!-- <h3> Welcome!!</h3> -->
+			   Upload desired property..<br/>
 
-           
+			   <!-- upload form -->
+			   <form method="post" action="#" style="width:500px; margin-top:30px;">
+    <label for="propertyname">Name of Property</label>
+    <input type="text" id="propertyname" name="propertyname" placeholder="Property name..">
+
+	<label for="Desc">Description</label>
+    <textarea id="desc" name="property_desc" placeholder="Property Description.." style="height:100px; width:100%;"></textarea>
+	
+	<p></p>
+	<input type="file" id="myFile" name="filename"> <!--file upload-->
+	<p></p>
+    <input type="submit" value="Submit" name="Submit">
+  </form>   
 
 </div>
-
-
             </div>
 		</div>
 	</div>

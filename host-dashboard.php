@@ -86,7 +86,7 @@ include("connection.php");
 							Dashboard </a>
 						</li>
                         <li>
-							<a href="upload.php">
+							<a href="upload-a-property.php">
 							<i class="glyphicon glyphicon-user"></i>
 							Upload a property </a>
 						</li>
@@ -111,7 +111,7 @@ include("connection.php");
             <div class="profile-content">
 			   <h3> Welcome!!</h3>
 
-           
+           <!-- properties go here -->
 
 </div>
 
