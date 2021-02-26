@@ -1,3 +1,5 @@
+
+
  <!-- Card Start -->
  <div class="container py-3">
   <div class="card">
@@ -12,7 +14,7 @@
           <p class="card-text"><i class="fa fa-tag"></i><b> £500/Night </b></p>
           <p class="card-text"><i class="fas fa-map-marker-alt"></i><b> San miguel, California </b></p>
           <br>
-          <a href="booking-confirmation-form.php" class="mt-auto btn btn-primary  ">Book now</a>
+          <a  class="mt-auto btn btn-primary" href="booking-confirmation-form.php">Book now</a>
         </div>
       </div>
       <!-- Carousel start -->
@@ -66,7 +68,7 @@
           <p class="card-text"><i class="fa fa-tag"></i><b> £850/Night </b></p>
           <p class="card-text"><i class="fas fa-map-marker-alt"></i><b> £500/Night </b></p>
           <br>
-          <a href="booking-confirmation-form.php" class="mt-auto btn btn-primary  ">Book now</a>
+          <a class="mt-auto btn btn-primary " href="booking-confirmation-form.php" >Book now</a>
         </div>
       </div>
       <!-- Carousel start -->

@@ -1,6 +1,7 @@
 <?php
 include("connection.php");
 
+// Sign in 
 if (isset($_POST['signin'])){
 	$email = $_POST['email'];
 	$password = $_POST['password'];
@@ -18,6 +19,75 @@ if (isset($_POST['signin'])){
 			$msg = "Incorrect email or password!";
 		}
 	}
+}
+
+//Register 
+if(isset($_POST['signup'])){
+	$nameErr = $emailErr = $passwordErr = $rep_passwordErr = $msg = "";
+	$firstname = $lastname = $email = $tel = $password = $rep_password = "";
+  
+	if (empty($_POST["firstname"])){ 
+	  $nameErr = "Required!";
+	}else{
+	  $firstname = $_POST["firstname"];
+	}
+  
+	if (empty($_POST["lastname"])){
+	  $nameErr = "Required!";
+	}else{
+	  $lastname = $_POST["lastname"];
+	}
+  
+	if(empty($_POST["email"])){
+	  $emailErr = "Required!";
+	}elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+	  $emailErr = "Invalid Email Format!";
+	}else{
+		$email = $_POST["email"];
+	}
+
+	$tel = $_POST["tel"];
+
+  
+  // Validate password
+	if(empty($_POST["password"])){
+	  $passwordErr = "Required!";
+	}elseif(strlen($_POST["password"]) < 4){
+	  $passwordErr = "Must have atleast 4 characters!";
+	}else{
+	  $password = $_POST["password"];
+	}
+  
+	// Validate confirm password
+  if(empty($_POST["rep_password"])){
+	$rep_passwordErr = "Required!";
+  }else{
+	$rep_password = $_POST["rep_password"];
+	if(empty($passwordErr) && ($password != $rep_password)){
+	  $rep_passwordErr = "Password not a match!!";
+	}
+  }
+
+  // first check the database to make sure 
+  // a user does not already exist with the same email
+  $user_check_query = "SELECT * FROM hosts WHERE email = '$email' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+
+  if ($user['email'] === $email){
+    $msg = "Email already exists!";
+  }
+
+  // Check input errors before inserting in database
+if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($msg)){
+	$sql = "INSERT INTO hosts (firstname, lastname, email, tel, password)
+			VALUES ('$firstname', '$lastname', '$email', '$tel', '$password')";
+  
+			mysqli_query($db, $sql);
+			$_SESSION['host_id'] = $email;
+			header("Location:dashboard.php");
+  }
+  
 }
 
 ?>
@@ -75,36 +145,52 @@ if (isset($_POST['signin'])){
 		
 		<div class="login-form">
                                 <!-- Register -->
-	<form id="register" method="post" action="#">
+	<form id="register" method="post" action="">
         <div class="sign-up-htm">       
 				<div class="group">
 					<label for="user" class="label">Firstname</label>
-					<input id="user" type="text" class="input" name="firstname">
+					<input id="user" type="text" class="input" value="<?php if(isset($firstname)){ echo $firstname;} ?>" name="firstname">
+
+					<span style="color:red;"><?php if(isset($nameErr)){echo $nameErr;} ?></span>
 				</div>
 
                 <div class="group">
 					<label for="user" class="label">Lastname</label>
-					<input id="user" type="text" class="input" name="lastname">
+					<input id="user" type="text" class="input" value="<?php if(isset($lastname)){ echo $lastname;} ?>" name="lastname">
+
+					<span style="color:red;"><?php if(isset($nameErr)){echo $nameErr;} ?></span>
 				</div>
 
                 <div class="group">
 					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="email" class="input" name="email" required>
+					<input id="pass" type="email" class="input" value="<?php if(isset($email)){ echo $email;} ?>" name="email" required>
+
+					<span style="color:red;"><?php if(isset($emailErr)){echo $emailErr;} ?></span>
+				</div>
+
+				<div class="group">
+					<label for="tel" class="label">Tel</label>
+					<input id="phone" type="tel" class="input" minlength="3" name="tel">
 				</div>
 
 				<div class="group">
 					<label for="pass" class="label">Password</label>
 					<input id="pass" type="password" class="input" data-type="password" minlength="3" name="password" required>
+
+					<span style="color:red;"><?php if(isset($passwordErr)){echo $passwordErr;} ?></span>
 				</div>
 
 				<div class="group">
 					<label for="pass" class="label">Repeat Password</label>
 					<input id="pass" type="password" class="input" data-type="password" minlength="3" name="rep_password" required>
+
+					<p style="color:red;"><?php if(isset($rep_passwordErr)){echo $rep_passwordErr;} ?></p>
 				</div>
 
 				<div class="group">
-					<input type="submit" class="button" value="Sign Up">
+					<input type="submit" class="button" value="Sign Up" name="signup">
 				</div>
+				<p style="color:red;"><?php if(isset($msg)){echo $msg;} ?></p>
 	</form>
 
 				<div class="hr"></div>

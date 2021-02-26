@@ -10,7 +10,7 @@ include("connection.php");
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Visit Aberdeen</title>
+        <title>HoliHome</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
@@ -124,10 +124,17 @@ include("connection.php");
       <option value="Crathes Castle">Crathes Castle</option>
       <option value="Marischal College">Marischal College</option>
     </select>
-  
+
+    <label for="date">Start Date</label>
+    <input type="date" id="startdate" min="2021-01" name="startdate">
+
+    <p></p>
+    <label for="date"> End Date</label>
+    <input type="date" id="enddate" name="enddate">
+
+     <p></p>
     <input type="submit" value="Submit">
   </form>
-
 
 		</div>
 	</div>

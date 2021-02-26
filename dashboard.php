@@ -2,8 +2,6 @@
 include("connection.php");
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -62,7 +60,9 @@ include("connection.php");
 				<!-- END SIDEBAR USERPIC -->
 
 					<div class="profile-usertitle-name">
-						Marcus Doe
+
+						<!-- name goes here-->
+
 					</div>
 					<div class="profile-usertitle-job">
 						User

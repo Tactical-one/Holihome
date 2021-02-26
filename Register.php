@@ -1,10 +1,74 @@
 <?php
 include("connection.php"); 
 
+if (isset($_POST["register"])){ 
+  $nameErr = $emailErr = $passwordErr = $rep_passwordErr = $msg = "";
+  $firstname = $lastname = $email = $password = $rep_password = "";
+
+  if (empty($_POST["firstname"])){ 
+    $nameErr = "Required!";
+  }else{
+    $firstname = $_POST["firstname"];
+  }
+
+  if (empty($_POST["lastname"])){
+    $nameErr = "Required!";
+  }else{
+    $lastname = $_POST["lastname"];
+  }
+
+  if(empty($_POST["email"])){
+    $emailErr = "Required!";
+  }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    $emailErr = "Invalid Email Format!";
+  }else{
+    $email = $_POST["email"];
+  }
+
+// Validate password
+  if(empty($_POST["password"])){
+    $passwordErr = "Required!";
+  }elseif(strlen($_POST["password"]) < 4){
+    $passwordErr = "Must have atleast 4 characters!";
+  }else{
+    $password = $_POST["password"];
+  }
+
+  // Validate confirm password
+if(empty($_POST["rep_password"])){
+  $rep_passwordErr = "Required!";
+}else{
+  $rep_password = $_POST["rep_password"];
+  if(empty($passwordErr) && ($password != $rep_password)){
+    $rep_passwordErr = "Password not a match!!";
+  }
+}
+
+// first check the database to make sure 
+  // a user does not already exist with the same email
+  $user_check_query = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+
+  if ($user['email'] === $email){
+    $msg = "Email already exists!";
+  }
+
+
+// Check input errors before inserting in database
+if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($msg)){
+  $sql = "INSERT INTO users (firstname, lastname, email, password)
+          VALUES ('$firstname', '$lastname', '$email', '$password')";
+
+          mysqli_query($db, $sql);
+          $_SESSION['user_id'] = $email;
+          header("Location:dashboard.php");
+}
+
+    
+  }
+
 ?>
-
-
-
 
 
 <!DOCTYPE html>
@@ -57,38 +121,50 @@ include("connection.php");
                       <div class="container">
                         <div class="row">
                           <div class="col-md-9 col-lg-8 mx-auto">
-                            <h3 class="login-heading mb-4">Register</h3>
+                            <h3 class="login-heading mb-4">Register</h3> 
+                            <p style="color:red;"><?php if(isset($msg)){echo $msg;} ?></p>
 
-                            <form id="register" method="post" action="#">
+                            <form id="register" method="post" action="">
+
                               <div class="form-label-group">
-
-                                <input type="text" id="inputFirstname" class="form-control" placeholder="Firstname" name="firstname" required autofocus>
+                                <input type="text" id="inputFirstname" class="form-control" value="<?php if(isset($firstname)){ echo $firstname;} ?>" placeholder="Firstname" name="firstname" required autofocus>
                                 <label for="inputFirstname">Firstname</label>
-                              </div>
+
+                                <span style="color:red;"><?php if(isset($nameErr)){echo $nameErr;} ?></span>
+                              </div> 
 
                               <div class="form-label-group">
-                                <input type="text" id="inputLastname" class="form-control" placeholder="Lastname" name="lastname" required>
+                                <input type="text" id="inputLastname" class="form-control" value="<?php if(isset($lastname)){echo $lastname;} ?>"  placeholder="Lastname" name="lastname" required>
                                 <label for="inputLastname">Lastname</label>
+
+                                <span style="color:red;"><?php if(isset($nameErr)){ echo $nameErr;} ?></span>
                               </div>
 
                               <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required>
+                                <input type="email" id="inputEmail" class="form-control" value="<?php if(isset($email)){ echo $email;} ?>" placeholder="Email address" name="email" required>
                                 <label for="inputEmail">Email address</label>
-                              </div>
+
+                                <span style="color:red;"><?php if(isset($emailErr)){echo $emailErr;} ?></span>
+                              </div> 
               
                               <div class="form-label-group">
-                                <input type="password" minlength="3" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+                                <input type="password" minlength="4" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                                 <label for="inputPassword">Password</label>
-                              </div>
+
+                                <span style="color:red;"><?php if(isset($passwordErr)){echo $passwordErr;} ?></span>
+                              </div> 
 
                               <div class="form-label-group">
-                                <input type="password" minlength="3" id="inputConfirmPassword" class="form-control" placeholder="Password" name="rep_password" required>
+                                <input type="password" minlength="4" id="inputConfirmPassword" class="form-control" placeholder="Password" name="rep_password" required>
                                 <label for="inputConfirmPassword">Confirm Password</label>
-                              </div>
+                                
+                                <p style="color:red;"><?php if(isset($rep_passwordErr)){echo $rep_passwordErr;} ?></p>
+                              </div> 
 
-                              <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Register</button>
+                              <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" name="register" type="submit">Register</button>
                               <div class="text-center">
                                 <p class="small">Already have an account? <a class="small" href="login.php">Log In</a></div></p>
+                                
                             </form>
                           </div>
                         </div>
