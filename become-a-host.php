@@ -3,8 +3,8 @@ include("connection.php");
 
 // Sign in 
 if (isset($_POST['signin'])){
-	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$email = $_POST["email"];
+	$password = $_POST["password"];
 
 	if(empty($email) || empty($password)){ 
 		$msg = "Both fields must be entered!!";
@@ -23,7 +23,8 @@ if (isset($_POST['signin'])){
 
 //Register 
 if(isset($_POST['signup'])){
-	$nameErr = $emailErr = $passwordErr = $rep_passwordErr = $msg = "";
+	$nameErr = $emailErr = $passwordErr = $rep_passwordErr = $msg1 = "";
+	
 	$firstname = $lastname = $email = $tel = $password = $rep_password = "";
   
 	if (empty($_POST["firstname"])){ 
@@ -75,7 +76,7 @@ if(isset($_POST['signup'])){
   $user = mysqli_fetch_assoc($result);
 
   if ($user['email'] === $email){
-    $msg = "Email already exists!";
+    $msg1 = "Email already exists!";
   }
 
   // Check input errors before inserting in database
@@ -149,40 +150,40 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
         <div class="sign-up-htm">       
 				<div class="group">
 					<label for="user" class="label">Firstname</label>
-					<input id="user" type="text" class="input" value="<?php if(isset($firstname)){ echo $firstname;} ?>" name="firstname">
+					<input id="user" type="text" class="input" value="<?php if(isset($firstname)){echo $firstname;} ?>" name="firstname">
 
 					<span style="color:red;"><?php if(isset($nameErr)){echo $nameErr;} ?></span>
 				</div>
 
                 <div class="group">
 					<label for="user" class="label">Lastname</label>
-					<input id="user" type="text" class="input" value="<?php if(isset($lastname)){ echo $lastname;} ?>" name="lastname">
+					<input id="user" type="text" class="input" value="<?php if(isset($lastname)){echo $lastname;} ?>" name="lastname">
 
 					<span style="color:red;"><?php if(isset($nameErr)){echo $nameErr;} ?></span>
 				</div>
 
                 <div class="group">
 					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="email" class="input" value="<?php if(isset($email)){ echo $email;} ?>" name="email" required>
+					<input id="pass" type="email" class="input" value="<?php if(isset($email)){echo $email;} ?>" name="email" >
 
 					<span style="color:red;"><?php if(isset($emailErr)){echo $emailErr;} ?></span>
 				</div>
 
 				<div class="group">
 					<label for="tel" class="label">Tel</label>
-					<input id="phone" type="tel" class="input" minlength="3" name="tel">
+					<input id="phone" type="tel" class="input" minlength="3" name="tel" value="<?php if(isset($tel)){echo $tel;} ?>">
 				</div>
 
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password" minlength="3" name="password" required>
+					<input id="pass" type="password" class="input" data-type="password" minlength="3" name="password" >
 
 					<span style="color:red;"><?php if(isset($passwordErr)){echo $passwordErr;} ?></span>
 				</div>
 
 				<div class="group">
 					<label for="pass" class="label">Repeat Password</label>
-					<input id="pass" type="password" class="input" data-type="password" minlength="3" name="rep_password" required>
+					<input id="pass" type="password" class="input" data-type="password" minlength="3" name="rep_password" >
 
 					<p style="color:red;"><?php if(isset($rep_passwordErr)){echo $rep_passwordErr;} ?></p>
 				</div>
@@ -190,7 +191,8 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
 				<div class="group">
 					<input type="submit" class="button" value="Sign Up" name="signup">
 				</div>
-				<p style="color:red;"><?php if(isset($msg)){echo $msg;} ?></p>
+				<p style="color:red;"><?php if(isset($msg1)){echo $msg1;} ?></p>
+				
 	</form>
 
 				<div class="hr"></div>
@@ -202,7 +204,7 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
 		<form id="signin" method="post" action="">
             <div class="group">
 					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input" name="email">
+					<input id="pass" type="text" class="input" name="email" value="<?php if(isset($email)){ echo $email;} ?>">
 				</div>
 
 				<div class="group">

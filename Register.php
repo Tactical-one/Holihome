@@ -1,7 +1,7 @@
 <?php
 include("connection.php"); 
 
-if (isset($_POST["register"])){ 
+if (isset($_POST['register'])){ 
   $nameErr = $emailErr = $passwordErr = $rep_passwordErr = $msg = "";
   $firstname = $lastname = $email = $password = $rep_password = "";
 
@@ -157,12 +157,15 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
                               <div class="form-label-group">
                                 <input type="password" minlength="4" id="inputConfirmPassword" class="form-control" placeholder="Password" name="rep_password" required>
                                 <label for="inputConfirmPassword">Confirm Password</label>
-                                
+
                                 <p style="color:red;"><?php if(isset($rep_passwordErr)){echo $rep_passwordErr;} ?></p>
                               </div> 
 
                               <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" name="register" type="submit">Register</button>
                               <div class="text-center">
+
+                              <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
                                 <p class="small">Already have an account? <a class="small" href="login.php">Log In</a></div></p>
                                 
                             </form>

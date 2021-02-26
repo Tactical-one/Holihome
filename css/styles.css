@@ -58,7 +58,6 @@ body {
   color: var(--black);
   text-align: left;
   background-color: #fff;
-  background-image: url(../assets/img/cityview.jpg);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

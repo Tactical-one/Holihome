@@ -1,8 +1,28 @@
 <?php
 include("connection.php");
+
+//upload property descriptions
+if (isset($_POST['submit'])){
+	
+	$propertyname = $_POST["propertyname"];
+	$location = $_POST["location"];
+	$property_desc = $_POST["property_desc"];
+	$cost = $_POST["cost"];
+
+	if(empty($propertyname) || empty($location)){
+		$msg = "All fields must be entered!";
+	}elseif(empty($cost)){
+		$msg = "Enter cost!";
+	}else{
+
+	$sql = "INSERT INTO property (propertyname, location, property_desc, cost) VALUES ('$propertyname', '$location', '$property_desc', '$cost')";
+
+	 mysqli_query($db, $sql);
+		$msg1 = "Upload successful";
+	}
+}
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,21 +129,30 @@ include("connection.php");
         <!-- right section -->
 		<div class="col-md-9">
             <div class="profile-content">
-			  <!-- <h3> Welcome!!</h3> -->
-			   Upload desired property..<br/>
-
+			 
 			   <!-- upload form -->
-			   <form method="post" action="#" style="width:500px; margin-top:30px;">
+			   <form method="post" action="" style="width:500px; margin-top:30px;">
     <label for="propertyname">Name of Property</label>
-    <input type="text" id="propertyname" name="propertyname" placeholder="Property name..">
+    <input type="text" id="propertyname" name="propertyname" placeholder="Property name.." value="<?php if(isset($propertyname)){echo $propertyname;} ?>">
+
+	<label for="location">Location</label>
+    <input type="text" id="location" name="location" placeholder="City, Country" value="<?php if(isset($location)){echo $location;}?>">
 
 	<label for="Desc">Description</label>
-    <textarea id="desc" name="property_desc" placeholder="Property Description.." style="height:100px; width:100%;"></textarea>
+    <textarea id="desc" name="property_desc" value="<?php echo $property_desc; ?>" placeholder="Property Description.." style="height:100px; width:100%;"></textarea>
+
+	<label for="cost">Cost(£)</label>
+    <input type="text" id="cost" name="cost" placeholder="cost" value="" >
 	
 	<p></p>
 	<input type="file" id="myFile" name="filename"> <!--file upload-->
 	<p></p>
-    <input type="submit" value="Submit" name="Submit">
+	<p style="color:red;"><?php if (isset($msg)){echo $msg;} ?> </p>
+	<p style="color:green;"><?php if (isset($msg1)){echo $msg1;} ?> </p>
+
+	<p>By uploading a property you agree to our <a href="#" style="color:dodgerblue">Terms</a>.</p>
+
+    <input type="submit" value="Submit" name="submit">
   </form>   
 
 </div>
