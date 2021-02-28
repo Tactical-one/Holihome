@@ -56,8 +56,8 @@ if(isset($_POST['signin'])){
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                       <!--  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Become a Host</a></li>         -->
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="become-a-host.php">Become a Host</a></li> 
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Register.php">Register</a></li>
-                      <!--  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#signup">Log In</a></li>          -->
                     </ul>
                 </div>
             </div>
@@ -79,7 +79,7 @@ if(isset($_POST['signin'])){
                             <p style="color:red;"><?php if(isset($msg)){ print $msg; }?></p>
 
                               <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" value="<?php if(isset($email)){echo $email;}?>" name="email" required autofocus>
                                 <label for="inputEmail">Email address</label>
                               </div>
               

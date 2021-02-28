@@ -2,7 +2,7 @@
 session_start();
 
 $servername = "localhost";
-$dbname='visitaberdeen';
+$dbname='holihome';
 $username = "root";
 $password = "";
 

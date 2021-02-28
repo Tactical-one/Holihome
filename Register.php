@@ -19,8 +19,6 @@ if (isset($_POST['register'])){
 
   if(empty($_POST["email"])){
     $emailErr = "Required!";
-  }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    $emailErr = "Invalid Email Format!";
   }else{
     $email = $_POST["email"];
   }
@@ -46,17 +44,15 @@ if(empty($_POST["rep_password"])){
 
 // first check the database to make sure 
   // a user does not already exist with the same email
+  if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($msg)){
   $user_check_query = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
 
   if ($user['email'] === $email){
     $msg = "Email already exists!";
-  }
+  }else{
 
-
-// Check input errors before inserting in database
-if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($msg)){
   $sql = "INSERT INTO users (firstname, lastname, email, password)
           VALUES ('$firstname', '$lastname', '$email', '$password')";
 
@@ -64,6 +60,7 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
           $_SESSION['user_id'] = $email;
           header("Location:dashboard.php");
 }
+  }
 
     
   }
@@ -104,7 +101,7 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                       <!--  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>         -->
-                      <!--  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Register</a></li>       -->
+                       <li class="nav-item"><a class="nav-link js-scroll-trigger" href="become-a-host.php">Become a Host</a></li> 
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Log In</a></li>          
                     </ul>
                 </div>

@@ -9,7 +9,7 @@ if (isset($_POST['signin'])){
 	if(empty($email) || empty($password)){ 
 		$msg = "Both fields must be entered!!";
 	}else{
-		$sql = "SELECT user_ID FROM users WHERE email='$email' AND password='$password'";
+		$sql = "SELECT host_ID FROM hosts WHERE email='$email' AND password='$password'";
 		$result = mysqli_query($db,$sql);
 
 		if(mysqli_num_rows($result) == 1){
@@ -41,8 +41,6 @@ if(isset($_POST['signup'])){
   
 	if(empty($_POST["email"])){
 	  $emailErr = "Required!";
-	}elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-	  $emailErr = "Invalid Email Format!";
 	}else{
 		$email = $_POST["email"];
 	}
@@ -71,16 +69,15 @@ if(isset($_POST['signup'])){
 
   // first check the database to make sure 
   // a user does not already exist with the same email
-  $user_check_query = "SELECT * FROM hosts WHERE email = '$email' LIMIT 1";
+
+  if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($msg1)){
+  	$user_check_query = "SELECT * FROM hosts WHERE email = '$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
 
-  if ($user['email'] === $email){
+  if($user['email'] === $email){
     $msg1 = "Email already exists!";
-  }
-
-  // Check input errors before inserting in database
-if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($msg)){
+  }else{
 	$sql = "INSERT INTO hosts (firstname, lastname, email, tel, password)
 			VALUES ('$firstname', '$lastname', '$email', '$tel', '$password')";
   
@@ -88,7 +85,8 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
 			$_SESSION['host_id'] = $email;
 			header("Location:dashboard.php");
   }
-  
+  }
+
 }
 
 ?>
@@ -139,12 +137,14 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
         <main>
         <div class="login-wrap">
 	<div class="login-html">
+	<p style="color:red;"><?php if(isset($msg1)){echo $msg1;} ?></p>
 	
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
 
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Register</label>
 		
 		<div class="login-form">
+		
                                 <!-- Register -->
 	<form id="register" method="post" action="">
         <div class="sign-up-htm">       
@@ -191,8 +191,6 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
 				<div class="group">
 					<input type="submit" class="button" value="Sign Up" name="signup">
 				</div>
-				<p style="color:red;"><?php if(isset($msg1)){echo $msg1;} ?></p>
-				
 	</form>
 
 				<div class="hr"></div>
@@ -204,7 +202,7 @@ if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($
 		<form id="signin" method="post" action="">
             <div class="group">
 					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input" name="email" value="<?php if(isset($email)){ echo $email;} ?>">
+					<input id="pass" type="text" class="input" name="email" value="<?php if(isset($email)){ echo $email;} ?>" required>
 				</div>
 
 				<div class="group">

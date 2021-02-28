@@ -1,0 +1,33 @@
+
+/* for users table */
+
+CREATE TABLE users (
+					user_ID		int(11)		NOT NULL AUTO_INCREMENT,
+    				firstname	varchar(20)	NOT NULL,
+    				lastname	varchar(20)	NOT NULL,
+    				email		varchar(35)	NOT NULL,
+    				password 	varchar(15)	NOT NULL,
+    				PRIMARY KEY (user_ID)
+);
+
+/* for hosts table */
+
+CREATE TABLE hosts (
+					host_ID		int(11)		NOT NULL AUTO_INCREMENT,
+    				firstname	varchar(20)	NOT NULL,
+    				lastname	varchar(20)	NOT NULL,
+    				email		varchar(35)	NOT NULL,
+				tel		NVARCHAR(18)	NULL,
+    				password 	varchar(15)	NOT NULL,
+    				PRIMARY KEY (host_ID)
+);
+
+
+CREATE TABLE property (
+					property_ID		int(11)		NOT NULL AUTO_INCREMENT,
+    				propertyname	varchar(30)	NOT NULL,
+    				location	varchar(20)	NOT NULL,
+    				property_desc	varchar(35)	NULL,
+    				cost	 	varchar(15)	NOT NULL,
+    				PRIMARY KEY (property_ID)
+);
