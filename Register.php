@@ -8,19 +8,19 @@ if (isset($_POST['register'])){
   if (empty($_POST["firstname"])){ 
     $nameErr = "Required!";
   }else{
-    $firstname = $_POST["firstname"];
+    $firstname = mysqli_real_escape_string($db,$_POST["firstname"]);
   }
 
   if (empty($_POST["lastname"])){
     $nameErr = "Required!";
   }else{
-    $lastname = $_POST["lastname"];
+    $lastname = mysqli_real_escape_string($db,$_POST["lastname"]);
   }
 
   if(empty($_POST["email"])){
     $emailErr = "Required!";
   }else{
-    $email = $_POST["email"];
+    $email = mysqli_real_escape_string($db,$_POST["email"]);
   }
 
 // Validate password
@@ -29,14 +29,14 @@ if (isset($_POST['register'])){
   }elseif(strlen($_POST["password"]) < 4){
     $passwordErr = "Must have atleast 4 characters!";
   }else{
-    $password = $_POST["password"];
+    $password = mysqli_real_escape_string($db,$_POST["password"]);
   }
 
   // Validate confirm password
 if(empty($_POST["rep_password"])){
   $rep_passwordErr = "Required!";
 }else{
-  $rep_password = $_POST["rep_password"];
+  $rep_password = mysqli_real_escape_string($db,$_POST["rep_password"]);
   if(empty($passwordErr) && ($password != $rep_password)){
     $rep_passwordErr = "Password not a match!!";
   }
@@ -54,11 +54,13 @@ if(empty($_POST["rep_password"])){
   }else{
 
   $sql = "INSERT INTO users (firstname, lastname, email, password)
-          VALUES ('$firstname', '$lastname', '$email', '$password')";
+          VALUES (?, ?, ?, ?)";
+  $stmt = $db->prepare($sql);
+  $stmt-> bind_param("ssss", $firstname, $lastname, $email, $password);  //ssss is the number of attributes
 
-          mysqli_query($db, $sql);
+          $result = mysqli_query($db, $stmt);
           $_SESSION['user_id'] = $email;
-          header("Location:dashboard.php");
+          header("Location:host-dashboard.php");
 }
   }
 
