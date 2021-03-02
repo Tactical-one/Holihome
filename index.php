@@ -43,7 +43,7 @@
             <div class="container d-flex h-100 align-items-center">
                 <div class="mx-auto text-center">
                     <h1 class="mx-auto my-0 text-uppercase">HoliHome</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Your Holiday Home for relaxed retreats is only one booking away</h2>
                     <a class="btn btn-primary js-scroll-trigger" href="login.php">Book now</a>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                     <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/Saudi-Arabia.jpg" alt="holiday home Saudi" /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <h4>Shoreline</h4>
+                            <h4>Dubai, UAE</h4>
                             <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">Misty</h4>
+                                    <h4 class="text-white">Greater London</h4>
                                     <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
                                     <hr class="d-none d-lg-block mb-0 ml-0" />
                                 </div>
@@ -131,7 +131,7 @@
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Mountains</h4>
+                                    <h4 class="text-white">Oia, Greece</h4>
                                     <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
                                     <hr class="d-none d-lg-block mb-0 mr-0" />
                                 </div>
@@ -150,12 +150,12 @@
         <div class="container">
             <div class="intro">
                 <h2 class="text-center">Testimonials </h2>
-                <p class="text-center">Our customers love us! Read what they have to say below. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
+                <p class="text-center">Our customers love us! Read what they have to say below.</p>
             </div>
             <div class="row people">
                 <div class="col-md-6 col-lg-4 item">
                     <div class="box">
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
+                        <p class="description">Wish I'd known about HoliHome a long time ago! Absolutely wonderful and easy to use</p>
                     </div>
                     <div class="author"><img class="rounded-circle" src="assets/img/ceo.jpg">
                         <h5 class="name">Kat Hudson</h5>
@@ -164,7 +164,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 item">
                     <div class="box">
-                        <p class="description">Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id.</p>
+                        <p class="description"> It makes the trip a litte more special when you have experiences outside the norm</p>
                     </div>
                     <div class="author"><img class="rounded-circle" src="assets/img/Topic_Page_Satya_Nadella.jpg">
                         <h5 class="name">Carl Kent</h5>
@@ -173,7 +173,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 item">
                     <div class="box">
-                        <p class="description">Aliquam varius finibus est, et interdum justo suscipit. Vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+                        <p class="description">Hosting my property on Holihome has definitely helped me meet amazing people</p>
                     </div>
                     <div class="author"><img class="rounded-circle" src="assets/img/ceo2.jpg">
                         <h5 class="name">Emily Clark</h5>

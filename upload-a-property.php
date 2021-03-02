@@ -1,27 +1,68 @@
 <?php
 include("connection.php");
 
+/*
+//code to validate if user is logged in
+function isLoggedIn(){
+	if (isset($_SESSION['host_id'])){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+if (!isLoggedIn()){
+	$_SESSION['msg'] = "You must log in first.";
+	header('Location:become-a-host.php');
+}
+
+*/
+
 //upload property descriptions
 if (isset($_POST['submit'])){
 	
-	$propertyname = $_POST["propertyname"];
-	$location = $_POST["location"];
-	$property_desc = $_POST["property_desc"];
-	$cost = $_POST["cost"];
+	$propertyname = mysqli_real_escape_string($db, $_POST["propertyname"]);
+	$location = mysqli_real_escape_string($db, $_POST["location"]);
+	$property_desc = mysqli_real_escape_string($db, $_POST["property_desc"]);
+	$cost = mysqli_real_escape_string($db, $_POST["cost"]);
 
+	//get image name
+	$image = $_FILES['image']['name'];
+
+	//image file directory
+	$target = "upload/" .basename($image);
+
+	//check file Size
+	/* if($_FILES['image']['size'] > 500000){
+		$msg = "File is too large";
+	} */
+
+	//Allow certain file formats
+	$imageFileType = strtolower(pathinfo($target,PATHINFO_EXTENSION));
+	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"){
+		$msg1 = "Sorry, only JPG,JPEG, PNG & GIF files are allowed."; 
+	}
+
+	//excute query
 	if(empty($propertyname) || empty($location)){
 		$msg = "All fields must be entered!";
 	}elseif(empty($cost)){
 		$msg = "Enter cost!";
+	}elseif(empty($image)){
+		$msg = "All fields must be entered!";
+	}elseif($_FILES['image']['size'] > 500000){
+		$msg = "File is too large";
 	}else{
 
-	$sql = "INSERT INTO property (propertyname, location, property_desc, cost) VALUES ('$propertyname', '$location', '$property_desc', '$cost')";
+	$sql = "INSERT INTO property (propertyname, location, property_desc, cost,image) VALUES ('$propertyname', '$location', '$property_desc', '$cost','$image')";
 
-	 mysqli_query($db, $sql);
-		$msg1 = "Upload successful";
+	 if(mysqli_query($db, $sql) && move_uploaded_file($_FILES['image']['tmp_name'], $target)){
+		$msg1 = "Upload successful!";
+	}else{
+		$msg = "Upload failed!!";
 	}
 }
-
+}
 ?>
 
 <!DOCTYPE html>
@@ -131,7 +172,8 @@ if (isset($_POST['submit'])){
             <div class="profile-content">
 			 
 			   <!-- upload form -->
-			   <form method="post" action="" style="width:500px; margin-top:30px;">
+			<form method="post" action="" style="width:500px; margin-top:30px;" enctype="multipart/form-data">
+
     <label for="propertyname">Name of Property</label>
     <input type="text" id="propertyname" name="propertyname" placeholder="Property name.." value="<?php if(isset($propertyname)){echo $propertyname;} ?>">
 
@@ -139,13 +181,13 @@ if (isset($_POST['submit'])){
     <input type="text" id="location" name="location" placeholder="City, Country" value="<?php if(isset($location)){echo $location;}?>">
 
 	<label for="Desc">Description</label>
-    <textarea id="desc" name="property_desc" value="<?php echo $property_desc; ?>" placeholder="Property Description.." style="height:100px; width:100%;"></textarea>
+    <textarea id="desc" name="property_desc" value="<?php if(isset($property_desc)){echo $property_desc;} ?>" placeholder="Property Description.." style="height:100px; width:100%;"></textarea>
 
 	<label for="cost">Cost(£)</label>
     <input type="text" id="cost" name="cost" placeholder="cost" value="" >
 	
 	<p></p>
-	<input type="file" id="myFile" name="filename"> <!--file upload-->
+	<input type="file" id="myFile" name="image"> <!--file upload-->
 	<p></p>
 	<p style="color:red;"><?php if (isset($msg)){echo $msg;} ?> </p>
 	<p style="color:green;"><?php if (isset($msg1)){echo $msg1;} ?> </p>

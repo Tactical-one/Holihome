@@ -1,5 +1,21 @@
 <?php
 include("connection.php");
+
+/*
+//code to validate if user is logged in
+function isLoggedIn(){
+	if (isset($_SESSION['host_id'])){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+if (!isLoggedIn()){
+	$_SESSION['msg'] = "You must log in first.";
+	header('Location:become-a-host.php');
+}
+*/
 ?>
 
 

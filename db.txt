@@ -29,5 +29,6 @@ CREATE TABLE property (
     				location	varchar(20)	NOT NULL,
     				property_desc	varchar(35)	NULL,
     				cost	 	varchar(15)	NOT NULL,
+				image		varchar(100)	NOT NULL,
     				PRIMARY KEY (property_ID)
 );
