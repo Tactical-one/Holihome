@@ -131,6 +131,7 @@ if (!isLoggedIn()){
 
             <!-- Card Start -->
            <?php require_once('properties.php'); ?>
+		   
 
             </div>
 		</div>

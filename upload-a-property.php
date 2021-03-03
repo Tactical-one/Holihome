@@ -25,6 +25,7 @@ if (isset($_POST['submit'])){
 	$location = mysqli_real_escape_string($db, $_POST["location"]);
 	$property_desc = mysqli_real_escape_string($db, $_POST["property_desc"]);
 	$cost = mysqli_real_escape_string($db, $_POST["cost"]);
+	$t = time();
 
 	//get image name
 	$image = $_FILES['image']['name'];
@@ -44,7 +45,7 @@ if (isset($_POST['submit'])){
 	}
 
 	//excute query
-	if(empty($propertyname) || empty($location)){
+	if(empty($propertyname) || empty($location) || empty($property_desc)){
 		$msg = "All fields must be entered!";
 	}elseif(empty($cost)){
 		$msg = "Enter cost!";
@@ -54,12 +55,12 @@ if (isset($_POST['submit'])){
 		$msg = "File is too large";
 	}else{
 
-	$sql = "INSERT INTO property (propertyname, location, property_desc, cost,image) VALUES ('$propertyname', '$location', '$property_desc', '$cost','$image')";
+	$sql = "INSERT INTO property (propertyname, location, property_desc, cost,image,uploaddate) VALUES ('$propertyname', '$location', '$property_desc', '$cost','$image', '$t')";
 
 	 if(mysqli_query($db, $sql) && move_uploaded_file($_FILES['image']['tmp_name'], $target)){
 		$msg1 = "Upload successful!";
 	}else{
-		$msg = "Upload failed!!";
+		$msg = "Upload failed! Please try again";
 	}
 }
 }

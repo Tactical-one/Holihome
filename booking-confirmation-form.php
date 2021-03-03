@@ -16,6 +16,32 @@ if (!isLoggedIn()){
 	header('Location:login.php');
 }
 */
+
+if (isset($_POST['submit'])){
+
+    $firstname = mysqli_real_escape_string($db, $_POST["firstname"]);
+    $lastname = mysqli_real_escape_string($db, $_POST["lastname"]);
+    $selectedproperty = mysqli_real_escape_string($db, $_POST["selectedproperty"]);
+    $startdate = $_POST["startdate"];
+    $enddate = $_POST["enddate"];
+    $t = time();
+
+    if(empty($firstname) || empty($lastname) || empty($selectedproperty)){
+        $msg = "All fields must be entered!";
+    }elseif(empty($startdate) || empty($enddate)){
+        $msg = "Please Provide booking dates!";
+    }else{
+        $sql = "INSERT INTO booking (firstname, lastname, selectedproperty,startdate, enddate, dateofbooking) VALUES ('$firstname', '$lastname', '$selectedproperty', '$startdate', '$enddate', '$t')";
+
+        if(mysqli_query($db, $sql)){
+            $msg = "Booking successful";
+        }else{
+            $msg = "Booking Failed, Please try again";
+        }
+    }
+
+}
+
 ?>
 
 
@@ -127,7 +153,7 @@ if (!isLoggedIn()){
                Your booking awaits....<br/>
 
 			<!-- Form booking -->
-			<form method="post" action="#" style="width:500px; margin-top:30px;">
+			<form method="post" action="" style="width:500px; margin-top:30px;">
     <label for="fname">First Name</label>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
@@ -136,9 +162,16 @@ if (!isLoggedIn()){
 
     <label for="property">Select Property</label>
     <select id="property" name="selectedproperty">
-      <option value="Aberdeen Sculpture Trail">Aberdeen Sculpture Trail</option>
-      <option value="Crathes Castle">Crathes Castle</option>
-      <option value="Marischal College">Marischal College</option>
+
+        <?php 
+        $sql = "SELECT propertyname FROM property ORDER BY property_ID DESC";
+        $result = mysqli_query($db, $sql);
+        if(mysqli_num_rows($result)> 0){$c= 0;
+            while($row = mysqli_fetch_assoc($result)){?>
+
+      <option value="propertyname"><?php echo $row['propertyname'];?></option>
+      <?php $c++; }}else{echo "No available data";} ?>
+
     </select>
 
     <label for="date">Start Date</label>
@@ -149,7 +182,7 @@ if (!isLoggedIn()){
     <input type="date" id="enddate" name="enddate">
 
      <p></p>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" name="submit">
   </form>
 
 		</div>
