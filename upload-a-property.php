@@ -26,6 +26,7 @@ if (isset($_POST['submit'])){
 	$property_desc = mysqli_real_escape_string($db, $_POST["property_desc"]);
 	$cost = mysqli_real_escape_string($db, $_POST["cost"]);
 	$t = time();
+	$date = date("Y-m-d H:i", $t);
 
 	//get image name
 	$image = $_FILES['image']['name'];
@@ -55,7 +56,7 @@ if (isset($_POST['submit'])){
 		$msg = "File is too large";
 	}else{
 
-	$sql = "INSERT INTO property (propertyname, location, property_desc, cost,image,uploaddate) VALUES ('$propertyname', '$location', '$property_desc', '$cost','$image', '$t')";
+	$sql = "INSERT INTO property (propertyname, location, property_desc, cost,image,uploaddate) VALUES ('$propertyname', '$location', '$property_desc', '$cost','$image', '$date')";
 
 	 if(mysqli_query($db, $sql) && move_uploaded_file($_FILES['image']['tmp_name'], $target)){
 		$msg1 = "Upload successful!";
@@ -124,7 +125,10 @@ if (isset($_POST['submit'])){
 				<!-- END SIDEBAR USERPIC -->
 
 					<div class="profile-usertitle-name">
-						Marcus Doe
+					<?php 
+						echo $_SESSION ['host_id'];
+						
+						?>
 					</div>
 					<div class="profile-usertitle-job">
 						Host

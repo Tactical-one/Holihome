@@ -21,20 +21,27 @@ if (isset($_POST['submit'])){
 
     $firstname = mysqli_real_escape_string($db, $_POST["firstname"]);
     $lastname = mysqli_real_escape_string($db, $_POST["lastname"]);
-    $selectedproperty = mysqli_real_escape_string($db, $_POST["selectedproperty"]);
-    $startdate = $_POST["startdate"];
-    $enddate = $_POST["enddate"];
+    $selectedproperty = $_POST["selectedproperty"];
+    $startdate = date_create($_POST["startdate"]);
+    $enddate = date_create($_POST["enddate"]);
+
+    //number of days calc
+    $interval = date_diff($startdate, $enddate);
+    $num = $interval->format('%a');
+
+    //get current date and time
     $t = time();
+    $date = date("Y-m-d H:i", $t);
 
     if(empty($firstname) || empty($lastname) || empty($selectedproperty)){
         $msg = "All fields must be entered!";
     }elseif(empty($startdate) || empty($enddate)){
         $msg = "Please Provide booking dates!";
     }else{
-        $sql = "INSERT INTO booking (firstname, lastname, selectedproperty,startdate, enddate, dateofbooking) VALUES ('$firstname', '$lastname', '$selectedproperty', '$startdate', '$enddate', '$t')";
+        $sql = "INSERT INTO booking (firstname, lastname, selectedproperty, startdate, enddate, numberofdays, dateofbooking) VALUES ('$firstname', '$lastname', '$selectedproperty', '$startdate', '$enddate', '$num', '$date')";
 
         if(mysqli_query($db, $sql)){
-            $msg = "Booking successful";
+            $msg1 = "Booking successful!";
         }else{
             $msg = "Booking Failed, Please try again";
         }
@@ -103,7 +110,11 @@ if (isset($_POST['submit'])){
 				<!-- END SIDEBAR USERPIC -->
 
 					<div class="profile-usertitle-name">
-						Marcus Doe
+                    <?php 
+						echo $_SESSION ['user_id'];
+						
+						?>
+					
 					</div>
 					<div class="profile-usertitle-job">
 						User
@@ -151,6 +162,10 @@ if (isset($_POST['submit'])){
             <div class="profile-content" style="margin-left:65px;">
 			   <h3> Welcome!!</h3>
                Your booking awaits....<br/>
+               <P></P>
+               <p style="color:red;"><?php if (isset($msg)){echo $msg;} ?> </p>
+
+               <p style="color:green;"><?php if (isset($msg1)){echo $msg1;} ?> </p>
 
 			<!-- Form booking -->
 			<form method="post" action="" style="width:500px; margin-top:30px;">
@@ -169,7 +184,7 @@ if (isset($_POST['submit'])){
         if(mysqli_num_rows($result)> 0){$c= 0;
             while($row = mysqli_fetch_assoc($result)){?>
 
-      <option value="propertyname"><?php echo $row['propertyname'];?></option>
+      <option value="<?php echo $row['propertyname'];?>"><?php echo $row['propertyname'];?></option>
       <?php $c++; }}else{echo "No available data";} ?>
 
     </select>

@@ -78,8 +78,13 @@ if (!isLoggedIn()){
 
 					<div class="profile-usertitle-name">
 
-						<!-- name goes here-->
-
+						<!-- current user-->
+						
+						<?php 
+						echo $_SESSION ['user_id'];
+						
+						?>
+					
 					</div>
 					<div class="profile-usertitle-job">
 						User

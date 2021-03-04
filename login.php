@@ -13,7 +13,6 @@ if(isset($_POST['signin'])){
 		$result = mysqli_query($db,$sql);
 		if(mysqli_num_rows($result) == 1){
 			$_SESSION['user_id'] = $email;
-      echo $_SESSION['success'] = "Login successful";
 			header("Location:dashboard.php");
 		}else{
 			$msg= "Incorrect email or password!";

@@ -78,7 +78,11 @@ if (!isLoggedIn()){
 				<!-- END SIDEBAR USERPIC -->
 
 					<div class="profile-usertitle-name">
-						Marcus Doe
+					<?php 
+						echo $_SESSION ['host_id'];
+						
+						?>
+					
 					</div>
 					<div class="profile-usertitle-job">
 						Host

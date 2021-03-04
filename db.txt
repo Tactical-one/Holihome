@@ -30,6 +30,7 @@ CREATE TABLE property (
     				property_desc	varchar(35)	NOT NULL,
     				cost	 	varchar(15)	NOT NULL,
 				image		varchar(100)	NOT NULL,
+				uploaddate	DATETIME	NOT NULL,
     				PRIMARY KEY (property_ID)
 );
 
@@ -39,7 +40,9 @@ CREATE TABLE booking (
     				firstname	varchar(20)	NOT NULL,
     				lastname	varchar(20)	NOT NULL,
     				selectedproperty	varchar(35)	NOT NULL,
-    				startdate	 	varchar(15)	NOT NULL,
-				enddate		varchar(100)	NOT NULL,
+    				startdate	 	DATE	NOT NULL,
+				enddate		DATE	NOT NULL,
+				numberofdays	INT	NOT NULL,
+				dateofbooking	DATETIME	NOT NULL,
     				PRIMARY KEY (booking_ID)
 );
