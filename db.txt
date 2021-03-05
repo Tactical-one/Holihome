@@ -52,6 +52,8 @@ CREATE TABLE booking (
 
 CREATE TABLE admin (
 			admin_ID		int(11)			NOT NULL AUTO_INCREMENT,
+			username		varchar(20)		NOT NULL,
 			password		varchar(20)		NOT NULL,
+			PRIMARY KEY (admin_ID)
 
 );

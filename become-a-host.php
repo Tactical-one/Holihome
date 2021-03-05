@@ -3,8 +3,8 @@ include("connection.php");
 
 // Sign in 
 if (isset($_POST['signin'])){
-	$email = $_POST["email"];
-	$password = $_POST["password"];
+	$email = mysqli_real_escape_string($db, $_POST["email"]);
+	$password = mysqli_real_escape_string($db, $_POST["password"]);
 
 	if(empty($email) || empty($password)){ 
 		$msg = "Both fields must be entered!!";

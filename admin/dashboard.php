@@ -1,10 +1,10 @@
 <?php
-include("connection.php");
+include("../connection.php");
 
 /*
 //code to validate if user is logged in
 function isLoggedIn(){
-	if (isset($_SESSION['host_id'])){
+	if (isset($_SESSION['admin'])){
 		return true;
 	}else{
 		return false;
@@ -13,9 +13,11 @@ function isLoggedIn(){
 
 if (!isLoggedIn()){
 	$_SESSION['msg'] = "You must log in first.";
-	header('Location:become-a-host.php');
+	header('Location:index.php');
 }
 */
+
+
 ?>
 
 
@@ -37,8 +39,8 @@ if (!isLoggedIn()){
         <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/custom2.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="../css/custom2.css" rel="stylesheet" />
     </head>
 
     <body id="page-top">
@@ -73,19 +75,19 @@ if (!isLoggedIn()){
 
                 <!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
-					<img id="avatar" src="assets/img/avatar profile.jpg" class="img-responsive" alt="">
+					<img id="avatar" src="../assets/img/avatar profile.jpg" class="img-responsive" alt="">
 				</div>
 				<!-- END SIDEBAR USERPIC -->
 
 					<div class="profile-usertitle-name">
 					<?php 
-						echo $_SESSION ['host_id'];
+						echo $_SESSION ['admin'];
 						
 						?>
 					
 					</div>
 					<div class="profile-usertitle-job">
-						Host
+						Admin
 					</div>
 				</div>
 				<!-- END SIDEBAR USER TITLE -->
@@ -93,7 +95,7 @@ if (!isLoggedIn()){
 				<!-- SIDEBAR BUTTONS -->
 				<div class="profile-userbuttons">
 					<!--<button type="button" class="btn btn-success btn-sm">Follow</button> -->
-					<button type="button" class="btn btn-danger btn-sm"><a href="logout-host.php" style="color:white;"> Log out </a></button>
+					<button type="button" class="btn btn-danger btn-sm"><a href="logout.php" style="color:white;"> Log out </a></button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 
@@ -106,9 +108,9 @@ if (!isLoggedIn()){
 							Dashboard </a>
 						</li>
                         <li>
-							<a href="upload-a-property.php">
+							<a href="#">
 							<i class="glyphicon glyphicon-user"></i>
-							Upload a property </a>
+							Disable an Account </a>
 						</li>
 						<li>
 							<a href="#" target="_blank">
@@ -131,9 +133,77 @@ if (!isLoggedIn()){
             <div class="profile-content">
 			   <h3> Welcome!!</h3>
 
-           <!-- properties go here -->
+               <!-- cards  -->
+               <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                   <!-- card1 -->
+    <div class="col">
+      <div class="card mb-4 shadow-sm">
+      <div class="card-header" style="background-color:#64a19d;">
+      <i class="fa fa-user-friends"></i>
+        <h4 class="my-0 fw-normal">Users</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">
 
+        <?php 
+                $sql = "SELECT COUNT('user_ID') FROM users";
+                $result = mysqli_query($db, $sql);
+                $row = mysqli_fetch_array($result);
+                echo "$row[0]";
+                
+                ?>
 
+        </h1> 
+      </div>
+    </div>
+    </div>
+
+    <!-- card2 -->
+    <div class="col">
+      <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+      <i class="fa fa-home"></i>
+        <h4 class="my-0 fw-normal">Properties </h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">
+
+        <?php 
+                $sql = "SELECT COUNT('property_ID') FROM property";
+                $result = mysqli_query($db, $sql);
+                $row = mysqli_fetch_array($result);
+                echo "$row[0]";
+                
+                ?>
+
+        </h1>
+      </div>
+    </div>
+    </div>
+
+    <!-- card3 -->
+    <div class="col">
+      <div class="card mb-4 shadow-sm">
+      <div class="card-header" style="background-color:#64a19d;">
+      <i class="fa fa-handshake"></i>
+        <h4 class="my-0 fw-normal">Bookings</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">
+
+        <?php 
+                $sql = "SELECT COUNT('booking_ID') FROM booking";
+                $result = mysqli_query($db, $sql);
+                $row = mysqli_fetch_array($result);
+                echo "$row[0]";
+                
+                ?>
+        </h1>
+      </div>
+    </div>
+    </div>
+    
+  </div>
 
 		   
 
@@ -156,7 +226,7 @@ if (!isLoggedIn()){
 <!-- Third party plugin JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+<script src="../js/scripts.js"></script>
 
     </body>
         </html>

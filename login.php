@@ -76,7 +76,7 @@ if(isset($_POST['signin'])){
 
                             <form id="login" method="post" action="">
 
-                            <p style="color:red;"><?php if(isset($msg)){ print $msg; }?></p>
+                            <p style="color:red;"><?php if(isset($msg)){ echo $msg; }?></p>
 
                               <div class="form-label-group">
                                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" value="<?php if(isset($email)){echo $email;}?>" name="email" required autofocus>
