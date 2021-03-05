@@ -27,9 +27,10 @@ if (isset($_POST['submit'])){
 
     //number of days calc
     $interval = date_diff($startdate, $enddate);
-    $num = $interval->format('%a');
+    $numberofdays = $interval->format('%a');
+    echo $numberofdays;
 
-    //get current date and time
+      //get current date and time
     $t = time();
     $date = date("Y-m-d H:i", $t);
 
@@ -38,7 +39,7 @@ if (isset($_POST['submit'])){
     }elseif(empty($startdate) || empty($enddate)){
         $msg = "Please Provide booking dates!";
     }else{
-        $sql = "INSERT INTO booking (firstname, lastname, selectedproperty, startdate, enddate, numberofdays, dateofbooking) VALUES ('$firstname', '$lastname', '$selectedproperty', '$startdate', '$enddate', '$num', '$date')";
+        $sql = "INSERT INTO booking (firstname, lastname, selectedproperty, startdate, enddate, numberofdays, dateofbooking) VALUES ('$firstname', '$lastname', '$selectedproperty', '$startdate', '$enddate', '$numberofdays', '$date')";
 
         if(mysqli_query($db, $sql)){
             $msg1 = "Booking successful!";

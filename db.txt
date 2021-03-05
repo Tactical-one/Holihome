@@ -42,7 +42,16 @@ CREATE TABLE booking (
     				selectedproperty	varchar(35)	NOT NULL,
     				startdate	 	DATE	NOT NULL,
 				enddate		DATE	NOT NULL,
-				numberofdays	INT	NOT NULL,
+				numberofdays	DATETIME	NOT NULL,
 				dateofbooking	DATETIME	NOT NULL,
     				PRIMARY KEY (booking_ID)
+);
+
+
+
+
+CREATE TABLE admin (
+			admin_ID		int(11)			NOT NULL AUTO_INCREMENT,
+			password		varchar(20)		NOT NULL,
+
 );
