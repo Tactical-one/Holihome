@@ -22,13 +22,15 @@ if (isset($_POST['submit'])){
     $firstname = mysqli_real_escape_string($db, $_POST["firstname"]);
     $lastname = mysqli_real_escape_string($db, $_POST["lastname"]);
     $selectedproperty = $_POST["selectedproperty"];
-    $startdate = date_create($_POST["startdate"]);
-    $enddate = date_create($_POST["enddate"]);
+    $startdate = $_POST["startdate"];
+    $enddate = $_POST["enddate"];
 
     //number of days calc
-    $interval = date_diff($startdate, $enddate);
+    $date1 = date_create("$startdate");
+    $date2 = date_create("$enddate");
+
+    $interval = date_diff($date1, $date2);
     $numberofdays = $interval->format('%a');
-    echo $numberofdays;
 
       //get current date and time
     $t = time();
@@ -39,10 +41,13 @@ if (isset($_POST['submit'])){
     }elseif(empty($startdate) || empty($enddate)){
         $msg = "Please Provide booking dates!";
     }else{
-        $sql = "INSERT INTO booking (firstname, lastname, selectedproperty, startdate, enddate, numberofdays, dateofbooking) VALUES ('$firstname', '$lastname', '$selectedproperty', '$startdate', '$enddate', '$numberofdays', '$date')";
+        $sql = $db ->prepare("INSERT INTO booking (firstname, lastname, selectedproperty, startdate, enddate, numberofdays, dateofbooking) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+        $sql -> bind_param("sssssis", $firstname, $lastname, $selectedproperty, $startdate, $enddate, $numberofdays, $date);
+        $sql -> execute();
 
         if(mysqli_query($db, $sql)){
-            $msg1 = "Booking successful!";
+            $msg1 = 'Booking successful! Please click <a href="invoice.php"> here </a> to generate invoice';
         }else{
             $msg = "Booking Failed, Please try again";
         }

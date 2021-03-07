@@ -27,7 +27,7 @@ if (isset($_POST['login'])){
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>HoliHome</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
         
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../admin/css/admin.css" rel="stylesheet" />
