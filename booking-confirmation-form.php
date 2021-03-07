@@ -46,7 +46,7 @@ if (isset($_POST['submit'])){
         $sql -> bind_param("sssssis", $firstname, $lastname, $selectedproperty, $startdate, $enddate, $numberofdays, $date);
         $sql -> execute();
 
-        if(mysqli_query($db, $sql)){
+        if($sql){
             $msg1 = 'Booking successful! Please click <a href="invoice.php"> here </a> to generate invoice';
         }else{
             $msg = "Booking Failed, Please try again";

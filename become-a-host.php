@@ -83,7 +83,7 @@ if(isset($_POST['signup'])){
   
 			mysqli_query($db, $sql);
 			$_SESSION['host_id'] = $email;
-			header("Location:dashboard.php");
+			header("Location:host-dashboard.php");
   }
   }
 

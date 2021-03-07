@@ -53,14 +53,17 @@ if(empty($_POST["rep_password"])){
     $msg = "Email already exists!";
   }else{
 
-  $sql = "INSERT INTO users (firstname, lastname, email, password)
-          VALUES (?, ?, ?, ?)";
-  $stmt = $db->prepare($sql);
-  $stmt-> bind_param("ssss", $firstname, $lastname, $email, $password);  //ssss is the number of attributes
+  $sql= $db ->prepare("INSERT INTO users (firstname, lastname, email, password)
+          VALUES (?, ?, ?, ?)");
+  $sql-> bind_param("ssss", $firstname, $lastname, $email, $password);  //ssss is the number of attributes
+  $sql -> execute();
 
-          $result = mysqli_query($db, $stmt);
+          if($sql){
           $_SESSION['user_id'] = $email;
-          header("Location:host-dashboard.php");
+          header("Location:dashboard.php");
+          } else{
+            $msg = "Registration failed!! Please try again";
+          }
 }
   }
 

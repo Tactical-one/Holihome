@@ -27,7 +27,7 @@ CREATE TABLE property (
 					property_ID		int(11)		NOT NULL AUTO_INCREMENT,
     				propertyname	varchar(30)	NOT NULL,
     				location	varchar(20)	NOT NULL,
-    				property_desc	varchar(35)	NOT NULL,
+    				property_desc	varchar(55)	NOT NULL,
     				cost	 	varchar(15)	NOT NULL,
 				image		varchar(100)	NOT NULL,
 				uploaddate	DATETIME	NOT NULL,
@@ -57,3 +57,10 @@ CREATE TABLE admin (
 			PRIMARY KEY (admin_ID)
 
 );
+
+
+
+CREATE VIEW invoice AS
+SELECT b.booking_ID, b.firstname, b.lastname, b.selectedproperty, b.startdate, b.enddate, b.numberofdays, b.dateofbooking, p.location, p.cost
+FROM booking b INNER JOIN property p
+WHERE b.selectedproperty = p.propertyname

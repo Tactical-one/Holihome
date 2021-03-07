@@ -111,7 +111,7 @@ if(mysqli_num_rows($result) > 0){
                                                 <td><strong>Property Name</strong></td>
                                                 <td class="text-center"><strong>Location</strong></td>
                                                 <td class="text-center"><strong>Number of Days</strong></td>
-                                                <td class="text-right"><strong>Total</strong></td>
+                                                <td class="text-right"><strong>Cost</strong></td>
                                             </tr>
                                         </thead>
                                         <tbody>
