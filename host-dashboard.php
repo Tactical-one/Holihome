@@ -130,9 +130,10 @@ if (!isLoggedIn()){
 		<div class="col-md-9">
             <div class="profile-content">
 			   <h3> Welcome!!</h3>
+			   <P>Here are your recent uploads</P>
 
            <!-- properties go here -->
-
+		<?php require_once('uploadedproperties.php'); ?>
 
 
 		   

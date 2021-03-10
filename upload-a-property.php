@@ -40,10 +40,11 @@ if (isset($_POST['submit'])){
 	} */
 
 	//Allow certain file formats
-	$imageFileType = strtolower(pathinfo($target,PATHINFO_EXTENSION));
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"){
+	 $imageFileType = strtolower(pathinfo($target,PATHINFO_EXTENSION));
+	/* if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"){
 		$msg1 = "Sorry, only JPG,JPEG, PNG & GIF files are allowed."; 
 	}
+	*/
 
 	//excute query
 	if(empty($propertyname) || empty($location) || empty($property_desc)){
@@ -54,6 +55,8 @@ if (isset($_POST['submit'])){
 		$msg = "All fields must be entered!";
 	}elseif($_FILES['image']['size'] > 500000){
 		$msg = "File is too large";
+	}elseif($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"){
+		$msg1 = "Sorry, only JPG,JPEG, PNG & GIF files are allowed."; 
 	}else{
 
 	$sql = "INSERT INTO property (propertyname, location, property_desc, cost,image,uploaddate) VALUES ('$propertyname', '$location', '$property_desc', '$cost','$image', '$date')";
