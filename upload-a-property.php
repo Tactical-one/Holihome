@@ -141,7 +141,7 @@ if (isset($_POST['submit'])){
 
 				<!-- SIDEBAR BUTTONS -->
 				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Follow</button>
+				<!--	<button type="button" class="btn btn-success btn-sm">Follow</button>	-->
 					<button type="button" class="btn btn-danger btn-sm"><a href="logout-host.php" style="color:white;"> Log out </a></button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
