@@ -1,7 +1,6 @@
 <?php
 include("connection.php");
 
-/*
 //code to validate if user is logged in
 function isLoggedIn(){
 	if (isset($_SESSION['host_id'])){
@@ -16,7 +15,6 @@ if (!isLoggedIn()){
 	header('Location:become-a-host.php');
 }
 
-*/
 
 //upload property descriptions
 if (isset($_POST['submit'])){

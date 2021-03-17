@@ -1,7 +1,6 @@
 <?php
 include("connection.php");
 
-/*
 //code to validate if user is logged in
 function isLoggedIn(){
 	if (isset($_SESSION['user_id'])){
@@ -15,7 +14,6 @@ if (!isLoggedIn()){
 	$_SESSION['msg'] = "You must log in first.";
 	header('Location:login.php');
 }
-*/
 
 if (isset($_POST['submit'])){
 
