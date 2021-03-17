@@ -9,15 +9,19 @@ if (isset($_POST['signin'])){
 	if(empty($email) || empty($password)){ 
 		$msg = "Both fields must be entered!!";
 	}else{
-		$sql = "SELECT host_ID FROM hosts WHERE email='$email' AND password='$password'";
+		$sql = "SELECT * FROM hosts WHERE email='$email'";
 		$result = mysqli_query($db,$sql);
 
 		if(mysqli_num_rows($result) == 1){
+			while ($row = mysqli_fetch_assoc($result)){
+				if(password_verify($password, $row['password'])){
 			$_SESSION['host_id'] = $email;
 			header("Location:host-dashboard.php");
 		}else{
 			$msg = "Incorrect email or password!";
 		}
+	}
+}
 	}
 }
 
@@ -66,6 +70,8 @@ if(isset($_POST['signup'])){
 	  $rep_passwordErr = "Password not a match!!";
 	}
   }
+
+  $password = password_hash($password, PASSWORD_DEFAULT);
 
   // first check the database to make sure 
   // a user does not already exist with the same email

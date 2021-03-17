@@ -42,6 +42,8 @@ if(empty($_POST["rep_password"])){
   }
 }
 
+$password = password_hash($password, PASSWORD_DEFAULT);
+
 // first check the database to make sure 
   // a user does not already exist with the same email
   if(empty($emailErr) && empty($passwordErr) && empty($rep_passwordErr) && empty($msg)){

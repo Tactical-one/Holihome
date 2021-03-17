@@ -9,15 +9,19 @@ if(isset($_POST['signin'])){
 	if(empty($email) || empty($password)) {
 		$msg="Both fields are required!!";
 	}else{
-		$sql = "SELECT user_ID FROM users WHERE email = '$email' AND password = '$password'";
+		$sql = "SELECT * FROM users WHERE email = '$email'";
 		$result = mysqli_query($db,$sql);
 		if(mysqli_num_rows($result) == 1){
+      while ($row = mysqli_fetch_assoc($result)){
+        if (password_verify($password, $row['password'])){
 			$_SESSION['user_id'] = $email;
 			header("Location:dashboard.php");
 		}else{
 			$msg= "Incorrect email or password!";
 		}
 	}
+    }
+  }
 }
 ?>
 
