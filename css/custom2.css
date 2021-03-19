@@ -223,3 +223,18 @@ input[type=submit]:hover {
 .table > tbody > tr > .highrow {
   border-top: 3px solid;
 }
+
+
+.search-container {
+  float: right;
+  width: 30%;
+  margin-left: 30%;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .search-container {
+    float: none;
+  }
+  
+}

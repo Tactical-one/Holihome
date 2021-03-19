@@ -15,6 +15,21 @@ if (!isLoggedIn()){
 	header('Location:index.php');
 }
 
+if (isset($_POST['disable'])){
+  $accountname = mysqli_real_escape_string($db, $_POST["accountname"]);
+
+  if(empty($accountname)){
+    $msg1 = " Please enter an account to disable";
+  }else{
+
+  $sql = "DELETE FROM hosts WHERE email = '$accountname'";
+if(mysqli_query($db, $sql)){
+  $msg = "You have successfully disabled user account " . $accountname;
+}else{
+  $msg1 = "Error!";
+}
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -97,12 +112,12 @@ if (!isLoggedIn()){
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
 					<ul class="nav_dash">
-						<li class="active">
+						<li>
 							<a href="dashboard.php">
 							<i class="glyphicon glyphicon-home"></i>
 							Dashboard </a>
 						</li>
-                        <li>
+                        <li class = "active">
 							<a href="disable.php">
 							<i class="glyphicon glyphicon-user"></i>
 							Disable an Account </a>
@@ -126,88 +141,22 @@ if (!isLoggedIn()){
         <!-- right section -->
 		<div class="col-md-9">
             <div class="profile-content">
-			   <h3> Welcome!!</h3>
+			   <h3> </h3>
 
-               <!-- cards  -->
-               <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                   <!-- card1 -->
-    <div class="col">
-      <div class="card mb-4 shadow-sm">
-      <div class="card-header" style="background-color:#64a19d;">
-      <i class="fa fa-user-friends"></i>
-        <h4 class="my-0 fw-normal">Users</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">
-
-        <?php 
-                $sql = "SELECT COUNT('user_ID') FROM users";
-                $result = mysqli_query($db, $sql);
-                $row = mysqli_fetch_array($result);
-                echo "$row[0]";
-                
-                ?>
-
-        </h1> 
-      </div>
-    </div>
-    </div>
-
-    <!-- card2 -->
-    <div class="col">
-      <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-      <i class="fa fa-home"></i>
-        <h4 class="my-0 fw-normal">Properties </h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">
-
-        <?php 
-                $sql = "SELECT COUNT('property_ID') FROM property";
-                $result = mysqli_query($db, $sql);
-                $row = mysqli_fetch_array($result);
-                echo "$row[0]";
-                
-                ?>
-
-        </h1>
-      </div>
-    </div>
-    </div>
-
-    <!-- card3 -->
-    <div class="col">
-      <div class="card mb-4 shadow-sm">
-      <div class="card-header" style="background-color:#64a19d;">
-      <i class="fa fa-handshake"></i>
-        <h4 class="my-0 fw-normal">Bookings</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">
-
-        <?php 
-                $sql = "SELECT COUNT('booking_ID') FROM booking";
-                $result = mysqli_query($db, $sql);
-                $row = mysqli_fetch_array($result);
-                echo "$row[0]";
-                
-                ?>
-        </h1>
-      </div>
-    </div>
-    </div>
+        
+			<!-- Form booking -->
+			<form method="post" action="" style="width:500px; margin-top:30px;">
     
-  </div>
-		   
+    <label for="lname">Enter account to disable </label>
+    <input type="text" id="accountname" name="accountname" placeholder="Enter email of user">
 
-</div>
+     <p></p>
+    <input type="submit" value="Disable" name="disable">
+  </form>     
 
-
-            </div>
-		</div>
-	</div>
-
+  <p></p>
+  <p style="color:green;"><?php if(isset($msg)){echo $msg;}?></p>
+  <p style="color:red;"><?php if(isset($msg1)){echo $msg1;}?></p>
                 </main>
 
                 
